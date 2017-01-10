@@ -1,0 +1,189 @@
+<html>
+
+<head>
+  <style>
+    @font-face {
+      font-family: 'zipcode';
+      src: url('ZIPcode.ttf');
+    }
+    
+    html {
+      padding: 0;
+      margin: 0;
+    }
+    
+    .receiver-zip-large {
+      font-family: zipcode;
+      font-size: 65;
+      width: 240px;
+      height: 65px;
+      float: right;
+      clear: right;
+    }
+    
+    .c6-size {
+      width: 162mm;
+      height: 114mm;
+      padding: 0;
+      margin: 0;
+      padding-top: 15px;
+      padding-left: 20px;
+      border-style: solid;
+      border-width: 1px;
+    }
+    
+    .sender {
+      position: relative;
+      top: 8px;
+      width: 255px;
+      height: 110px;
+      border-width: 1px;
+      float: left;
+    }
+    
+    .receiver {
+      width: 325px;
+      height: 110px;
+      border-width: 1px;
+      float: right;
+    }
+    
+    .from-label {
+      width: 50px;
+      float: left;
+      font-style: italic;
+      font-size: 12;
+      font-family: verdana;
+      margin: 0px;
+    }
+    
+    .from-value {
+      width: 250px;
+      float: right;
+      font-family: verdana;
+      font-size: 12;
+      margin: 0px;
+      border-bottom-style: solid;
+      border-width: 1px;
+    }
+    
+    .from-zipcode-sender {
+      width: 105px;
+      float: right;
+      height: 24px;
+      font-family: arial;
+      font-size: 20;
+      border-style: solid;
+      letter-spacing: 6px;
+      padding-left: 8px;
+      border-top-style: none;
+      border-width: 1px;
+      margin-right: 5px;
+    }
+    
+    .from-zipcode-receiver {
+      width: 125px;
+      float: left;
+      height: 28px;
+      font-family: arial;
+      font-size: 25;
+      border-style: solid;
+      letter-spacing: 6px;
+      padding-left: 8px;
+      border-top-style: none;
+      border-width: 1px;
+      margin-right: 10px;
+    }
+    
+    .stamp-placeholder {
+      width: 55px;
+      height: 55px;
+      border-style: solid;
+      border-left-style: none;
+      border-bottom-style: none;
+      border-width: 1px;
+      margin-right: 45px;
+      margin-top: 35px;
+      float: right;
+    }
+    
+    .data-container {
+      width: 250px;
+      margin-top: 5px;
+      height: 20px;
+    }
+  </style>
+</head>
+<div class='c6-size'>
+  <div class='sender'>
+    <div class='data-container' style='height: 20px'>
+      <div class='from-label'>
+        От кого
+      </div>
+      <div class='from-value' style='width:195px;'>
+        $sender_name
+      </div>
+    </div>
+    <div class='data-container'>
+      <div class='from-label'>
+        Откуда
+      </div>
+      <div class='from-value' style='width:195px;'>
+        $sender_address_line1
+      </div>
+    </div>
+    <div class='data-container'>
+      <div class='from-value' style='width:250px;'>
+        $sender_address_line2
+      </div>
+    </div>
+    <div class='data-container' style='height: 15px'>
+      <div class='from-value' style='width:250px;'>
+        $sender_address_line3
+      </div>
+    </div>
+    <div class='from-zipcode-sender'>
+      $sender_zipcode
+    </div>
+  </div>
+  <div class='stamp-placeholder'></div>
+  <div style='padding-top: 30px;float:left; width:100%; height:70px; text-align: center'>
+    $shipping_method
+  </div>
+  <div class='receiver' style='clear:right;'>
+    <div class='data-container' style='height: 20px; width:265px'>
+      <div class='from-label' style='width:35px'>
+        Кому
+      </div>
+      <div class='from-value' style='width:195px;width:230px'>
+        $shipping_full_name
+      </div>
+    </div>
+    <div class='data-container' style='width:265px'>
+      <div class='from-label' style='width:35px'>
+        Куда
+      </div>
+      <div class='from-value' style='width:195px;width:230px'>
+        $shipping_address_line1
+      </div>
+    </div>
+    <div class='data-container' style='width:265px'>
+      <div class='from-value' style='width:265px'>
+        $shipping_address_line2
+      </div>
+    </div>
+    <div class='data-container' style='height: 15px;width:265px'>
+      <div class='from-value' style='width:265px'>
+        $shipping_address_line3
+      </div>
+    </div>
+    <div class='from-zipcode-receiver'>
+      $shipping_address_zipcode
+    </div>
+  </div>
+  <div class='receiver-zip-large' style='margin-top:-40px; margin-right: 335px'>
+    -$shipping_address_zipcode
+  </div>
+</div>
+
+</html>
