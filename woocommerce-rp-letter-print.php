@@ -219,7 +219,7 @@ final class WooCommerce_Russian_Post_Letter_Print {
     $order = new WC_Order($orderid);
     $mpdf->AddPage('L');
 
-    $shipping_full_name = $order->get_formatted_shipping_full_name()?: '&nbsp;';
+		$shipping_full_name = $order->get_formatted_shipping_full_name()?: '&nbsp;';
     $shipping_address = $order->get_address('shipping');
     $shipping_address_address1 = $shipping_address['address_1']?: '&nbsp;';
 
@@ -252,9 +252,18 @@ final class WooCommerce_Russian_Post_Letter_Print {
     $sender_address_line3 = get_option('wc_settings_tab_rp_letter_print_section_sender_address_line3')?: '&nbsp;';
     $sender_zipcode = get_option('wc_settings_tab_rp_letter_print_section_sender_address_zipcode')?: '&nbsp;';
 
+		$total_weight = 4;
+		$order_items = $order->get_items();
+		foreach( array_values($order_items) as $item ) {
+			$product = new WC_Product($item['item_meta']['_product_id'][0]);
+			$item_weight = $product->get_weight();
+			$total_weight = $total_weight + $item_weight*$item['item_meta']['_qty'][0];
+		}       
+
 		$template = file_get_contents(dirname(__FILE__).'/custom/assets/c6_template.html');
 		eval("\$template = \"$template\";");
-    $mpdf->WriteHTML($template);
+
+		$mpdf->WriteHTML($template);
 	}
 	
 	function mbWordwrap($str, $width = 74, $break = "\n", $cut = false) { 
